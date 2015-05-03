@@ -21,7 +21,8 @@
     "mongoose": "~3.8.8",
     "bundalo": "^0.2.4",
     "debuglog": "^1.0.1",
-    "localeresolver": "^0.1.1"
+    "localeresolver": "^0.1.1",
+    "aws-sdk": "~2.1.26"
   },
   "devDependencies": {
     "mocha": "^1.18.0",
