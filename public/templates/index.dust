@@ -1,5 +1,5 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+    <h1>{name} is currently runnning.</h1>
 {/body}
