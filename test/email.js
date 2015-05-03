@@ -8,7 +8,7 @@ var kraken = require('kraken-js'),
     request = require('supertest');
 
 
-describe('/', function () {
+describe('/email', function () {
 
     var app, mock;
 
@@ -30,17 +30,29 @@ describe('/', function () {
     });
 
 
-    it('should say "hello"', function (done) {
+    it('/resend should require an :id', function (done) {
         request(mock)
-            .get('/')
-            .expect(200)
-            .expect('Content-Type', /html/)
-            
-                .expect(/Hello, /)
-            
+            .get('/email/resend')
+            .expect(404)
             .end(function (err, res) {
                 done(err);
             });
+    });
+    
+    
+    it('/resend/1 should be OK when supplying an :id', function (done) {
+        request(mock)
+            .get('/email/resend/1')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(function (err, res) {
+                hasDetails(res);
+                done(err);
+            });
+        
+        function hasDetails (res) {
+            if('details' in res.body) throw new Error("does not contain a details object");
+        }
     });
 
 });
